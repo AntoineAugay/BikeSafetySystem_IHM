@@ -14,6 +14,11 @@ public:
     bool hourUpdate;
     QString minut;
     bool minutUpdate;
+    QString rearState;
+    bool rearStateUpdate;
+    QString commandState;
+    bool commandStateUpdate;
+
 };
 
 #endif // DATARECORD_H

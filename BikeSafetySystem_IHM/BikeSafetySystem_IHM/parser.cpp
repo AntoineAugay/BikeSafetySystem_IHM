@@ -32,6 +32,15 @@ void Parser::extractData(DataRecord& data, std::string frame){
             data.speed = (tmp.substr(1, lenght-1)).c_str();
             data.speedUpdate = true;
             break;
+        case 0x12 :
+            data.rearState = (tmp.substr(1, lenght-1)).c_str();
+            data.rearStateUpdate = true;
+            break;
+        case 0x14 :
+            data.commandState = (tmp.substr(1, lenght-1)).c_str();
+            data.commandStateUpdate = true;
+            break;
+
         }
     }
 }

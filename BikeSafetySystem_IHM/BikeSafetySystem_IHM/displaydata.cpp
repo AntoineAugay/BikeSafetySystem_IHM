@@ -13,6 +13,11 @@ DiplayData::DiplayData(QObject *parent) : QObject(parent)
     dataRecord.minutUpdate = true;
     dataRecord.speed = "--";
     dataRecord.speedUpdate = true;
+    dataRecord.rearState = "-";
+    dataRecord.rearStateUpdate = true;
+    dataRecord.commandState = "-";
+    dataRecord.commandStateUpdate = true;
+
 
     updateIHMTimer->start(1000);
     updateDataTimer->start(500);
@@ -36,20 +41,15 @@ QString DiplayData::getSpeedChange() {
     return dataRecord.speed;
 }
 
-/*
-void DiplayData::someFunction() {
-
-    if ( i == 0) {
-        theValue = 0;
-        speed = "15";
-    }
-    if (i == 1) {
-        theValue = 1;
-        speed = "12";
-    }
-    //emit speedChange(i);
+QString DiplayData::getRearStateChange() {
+    dataRecord.rearStateUpdate = false;
+    return dataRecord.rearState;
 }
-*/
+
+QString DiplayData::getCommandStateChange() {
+    dataRecord.commandStateUpdate = false;
+    return dataRecord.commandState;
+}
 
 void DiplayData::updateIHM() {
 
@@ -61,6 +61,12 @@ void DiplayData::updateIHM() {
     }
     if(dataRecord.speedUpdate){
         emit speedChange();
+    }
+    if(dataRecord.rearStateUpdate){
+        emit rearStateChange();
+    }
+    if(dataRecord.commandStateUpdate){
+        emit commandStateChange();
     }
 }
 
